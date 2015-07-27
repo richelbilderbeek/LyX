@@ -5,7 +5,6 @@
 \textclass article
 \begin_preamble
 \usepackage{tikz}
-\usetikzlibrary{automata,positioning}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -26,7 +25,7 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command bibtex
 \index_command default
 \paperfontsize default
 \spacing single
@@ -64,10 +63,6 @@
 
 \begin_body
 
-\begin_layout Title
-TikZ example 2: Markov chain
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -81,162 +76,84 @@ begin{tikzpicture}
 
 \begin_layout Plain Layout
 
-
-\backslash
-node[state] (0) {$n-1$};
+  % Figure similar to figure 2 of
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-node[state,right= 4cm of 0] (1) {$n$};
+  %   Nee,Sean,Robert M.
+ May, and Paul H.
+ Harvey., "The reconstructed evolutionary process.", 1994
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-node[state,right= 4cm of 1] (2) {$n+1$};
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-draw[]     
-\end_layout
-
-\begin_layout Plain Layout
-
-   % From zero to zero
-\end_layout
-
-\begin_layout Plain Layout
-
-  %(0) edge[loop above] node {$1-(
-\backslash
-lambda+
-\backslash
-mu)(n-1)dt $}   (0)
-\end_layout
-
-\begin_layout Plain Layout
-
-  % From one to one
-\end_layout
-
-\begin_layout Plain Layout
-
-  (1) edge[loop above] node {$1-(
-\backslash
-lambda+
-\backslash
-mu) n 
-\backslash
-mathrm{d}t $}   (1)
-\end_layout
-
-\begin_layout Plain Layout
-
-  % From two to two
-\end_layout
-
-\begin_layout Plain Layout
-
- % (2) edge[loop above] node {$1-(
-\backslash
-lambda+
-\backslash
-mu)(n+1)dt $}   (2)
-\end_layout
-
-\begin_layout Plain Layout
-
-  % From zero to one
-\end_layout
-
-\begin_layout Plain Layout
-
-  (0) edge[->,bend left] node[anchor=south] {$
-\backslash
-lambda(n-1)
-\backslash
-mathrm{d}t $}   (1)     
-\end_layout
-
-\begin_layout Plain Layout
-
-  % From one to zero 
-\end_layout
-
-\begin_layout Plain Layout
-
-  (1) edge[->,bend left] node[anchor=north] {$
-\backslash
-mu n 
-\backslash
-mathrm{d}t $}   (0)  
+  % Draw the tree
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\end_layout
-
-\begin_layout Plain Layout
-
-  % From one to two 
-\end_layout
-
-\begin_layout Plain Layout
-
-  (1) edge[->,bend left] node[anchor=south] {$
 \backslash
-lambda n 
-\backslash
-mathrm{d}t$}   (2) 
+draw (0,0) node[anchor=east] {$t_1$}  -- (2, 0.0) -- (12,-4);
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\end_layout
-
-\begin_layout Plain Layout
-
-  % From two to one 
-\end_layout
-
-\begin_layout Plain Layout
-
-  (2) edge[->,bend left] node[anchor=north] {$
 \backslash
-mu (n+1) 
-\backslash
-mathrm{d}t$ }   (1) 
+draw (2, 0.5) node[anchor=south] {$t_2$}  -- (12, 4);
 \end_layout
 
 \begin_layout Plain Layout
 
   
+\backslash
+draw[ultra thick] (5,-1.0) node[anchor=south] {$t_3$}  -- (12,-0.8);
 \end_layout
 
 \begin_layout Plain Layout
 
-    
+  
+\backslash
+draw[ultra thick] (7, 2.0) node[anchor=north] {$t_4$}  -- (12,-0.4);
 \end_layout
 
 \begin_layout Plain Layout
 
-;
+  % Draw the arrows underneath
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[<->] (2,-7) -- (   7,-7) node[anchor=south] {$x_2$} -- (12,-7);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[<->] (5,-6) -- ( 8.5,-6) node[anchor=south] {$x_3$} -- (12,-6);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[<->] (7,-5) -- (10.5,-5) node[anchor=south] {$x_4$} -- (12,-5);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{tikzpicture} 
+end{tikzpicture}
 \end_layout
 
 \end_inset
